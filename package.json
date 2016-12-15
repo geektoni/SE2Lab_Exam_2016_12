@@ -1,0 +1,28 @@
+{
+  "name": "se2lab_exam_2016_12",
+  "version": "1.0.0",
+  "description": "Giovanni De Toni 171838",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "cd server/ && ../node_modules/.bin/jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geektoni/SE2Lab_Exam_2016_12.git"
+  },
+  "author": "Giovanni De Toni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geektoni/SE2Lab_Exam_2016_12/issues"
+  },
+  "homepage": "https://github.com/geektoni/SE2Lab_Exam_2016_12#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "jasmine": "^2.5.2",
+    "request": "^2.79.0",
+    "request-json": "^0.6.1"
+  }
+}

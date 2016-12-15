@@ -267,6 +267,56 @@ app.post('/addStudent', function(request, response)
 
 });
 
+/**
+* @brief Return a list of students whose mark is less/greater
+* than what specified.
+* @return A static page
+*/
+app.post('/searchByMark', function(request, response) {
+    
+    var headers = {};
+	headers["Access-Control-Allow-Origin"] = "*";
+	headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+	headers["Access-Control-Allow-Credentials"] = false;
+	headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+	headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+	headers["Content-Type"] = "application/json";
+    
+    var query = "";
+    var condition = "";
+    var number;
+    var studenListFiltered = [];
+    
+    //check body and parameters
+	if ( typeof request.body !== 'undefined' && request.body) {
+		if ( typeof request.body.query !== 'undefined') {
+		  query = request.body.query;	
+        } else {
+            query = "not defined";  
+        } 
+	} else {
+		query = "undefined";
+	}
+    
+    if (query != "not defined" && query != "undefined") {
+		number = parseInt(query.slice(1, query.length));
+        condition = query.charAt(0);
+        if (isNaN(numer) || (condtion != ">" && condition != "<")) {
+            //unaceptable input
+            response.writeHead(406, headers);
+            response.end(JSON.stringify("1"));  
+        } else {
+            studenListFiltered = studentManager.searchByMark(condition, number);
+        }
+	} else {
+		//unaceptable input
+		response.writeHead(406, headers);
+		response.end(JSON.stringify("1"));
+	}  
+    response.writeHead(200, headers);
+	response.end(JSON.stringify(studenListFiltered));
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
