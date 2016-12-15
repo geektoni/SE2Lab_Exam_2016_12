@@ -18,7 +18,11 @@ paths:
       description: it returns the complete lest of all students in the university
       responses:
         200:
-          description: the home page
+          description: a list off all students
+          schema:
+            type: array
+            items:
+                $ref: "#/definitions/student"
           
   /searchStudent:
     post:
