@@ -72,6 +72,49 @@ paths:
                 type: integer
         404:
           description: no students with that ID or SSN
+  /addStudent:
+    post:
+      summary: Add a student
+      description: it add a student, given his/her ID, SSN, name, address and mark
+      parameters:
+        - name: ID
+          in: formData
+          description: ID of the student
+          required: true
+          type: string
+        - name: SSN
+          in: formData
+          description: SSN of the student
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: name of the student
+          required: true
+          type: string
+        - name: address
+          in: formData
+          description: address of the student
+          required: true
+          type: string
+        - name: mark
+          in: formData
+          description: mark of the student
+          required: true
+          type: string
+      responses:
+        200:
+          description: return the name of the student
+          schema: 
+            $ref: "#/definitions/student"
+        406:
+          description: ID of error
+          schema: 
+            properties:
+              error:
+                type: integer
+        400:
+          description: insertion failed
             
   /searchByMark:
     post:
