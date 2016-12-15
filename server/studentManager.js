@@ -138,11 +138,11 @@ var searchByMark = function searchByMark(condition, mark) {
     var result = [];
     for(var i=0; i<studentList.length; i++) {
         if (condition == ">") {
-            if (studentList[i].mark > mark) {
+            if (parseInt(studentList[i].mark) > mark) {
                 result.push(studentList[i]);
             }
         } else if (condition == "<") {
-            if (studentList[i].mark < mark) {
+            if (parseInt(studentList[i].mark) < mark) {
                 result.push(studentList[i]);
             }
         }    
